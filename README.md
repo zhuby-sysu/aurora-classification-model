@@ -20,6 +20,17 @@ The code requires the following Python packages:
 - scipy
 We recommend using a virtual environment (e.g., `venv` or `conda`) to manage dependencies.
 
+## 🌟 Key Features
+
+- ✅ **State-of-the-art backbone**: Swin-Tiny Transformer adapted for 128×128 inputs.
+- ✅ **Hybrid AL strategy**: Combines *uncertainty sampling* (least confidence + margin) and *diversity sampling* (KMeans in feature space).
+- ✅ **Full reproducibility**: Fixed random seeds, deterministic CuDNN settings.
+- ✅ **Comprehensive evaluation**: Per-class metrics, confusion matrices, convergence curves.
+- ✅ **Baseline comparison**: Direct performance comparison against fully supervised model.
+
+## System Requirements
+- Python ≥ 3.8
+- Optional: NVIDIA GPU with CUDA support
 
 # Citation
 title={Swin transformer: Hierarchical vision transformer using shifted windows},
