@@ -1,9 +1,9 @@
 # Aurora Image Classification Model
 
-This repository contains the code used to train and evaluate the deep learning model for auroral image classification as described in the paper:  
+This repository contains the code used to train, evaluate, and interpret the deep learning model for auroral image classification as described in the paper:  
 "High-Accuracy Aurora Image Classification with Swin Transformer and Active Learning" (submitted to Earth and Space Science).
 
-This repository implements an **active learning framework** for classifying aurora images using a **Swin Transformer** backbone. The goal is to achieve competitive performance with significantly fewer labeled samples compared to full supervision.
+This specific implementation provides a robust, fully supervised training pipeline using a **Swin Transformer** backbone. It incorporates **5-Fold Cross-Validation** for reliable performance estimation and **Grad-CAM** for model interpretability, allowing researchers to visualize which parts of the aurora image drive the model's predictions.
 
 ## 📦 Dependencies
 
@@ -14,25 +14,34 @@ The code requires the following Python packages:
 - torchvision
 - timm (for Swin Transformer)
 - scikit-learn
+- pandas
+- opencv-python (cv2)
 - matplotlib, seaborn
 - tqdm
 - Pillow (PIL)
 - scipy
+
 We recommend using a virtual environment (e.g., `venv` or `conda`) to manage dependencies.
 
 ## 🌟 Key Features
 
-- ✅ **State-of-the-art backbone**: Swin-Tiny Transformer adapted for 128×128 inputs.
-- ✅ **Hybrid AL strategy**: Combines *uncertainty sampling* (least confidence + margin) and *diversity sampling* (KMeans in feature space).
-- ✅ **Full reproducibility**: Fixed random seeds, deterministic CuDNN settings.
-- ✅ **Comprehensive evaluation**: Per-class metrics, confusion matrices, convergence curves.
-- ✅ **Baseline comparison**: Direct performance comparison against fully supervised model.
+- ✅ **State-of-the-art backbone**: Swin-Tiny Transformer adapted for 128×128 image inputs.
+- ✅ **Robust Evaluation Framework**: Implements 5-Fold Cross-Validation to ensure reliable and generalized performance metrics across the dataset.
+- ✅ **Model Interpretability (Grad-CAM)**: Automatically generates attention heatmaps overlaying original images, visualizing the specific features the model uses to classify aurora types.
+- ✅ **Comprehensive Visualization & Reporting**: 
+  - Multi-class ROC curves with AUC scores.
+  - Detailed Confusion Matrices.
+  - Convergence/Training curves (Loss & Accuracy) across folds.
+  - Pandas-driven tabular reporting for per-class Precision, Recall, and F1-Score.
+- ✅ **Full reproducibility**: Fixed random seeds and deterministic CuDNN settings to ensure consistent results across runs.
 
-## System Requirements
+## 💻 System Requirements
+
 - Python ≥ 3.8
-- Optional: NVIDIA GPU with CUDA support
+- Optional but highly recommended: NVIDIA GPU with CUDA support for accelerated training and heatmap generation.
 
-# Citation
+## 📚 Citation
+
 title={Swin transformer: Hierarchical vision transformer using shifted windows},
 author={Liu, Ze and Lin, Yutong and Cao, Yue and Hu, Han and Wei, Yixuan and Zhang, Zheng and Lin, Stephen and Guo, Baining},
 booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
